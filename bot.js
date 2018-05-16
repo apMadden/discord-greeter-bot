@@ -26,8 +26,6 @@ bot.on('ready', function (evt) {
 });
 
 bot.on('message', function (user, userID, channelID, message, evt) {
-    // Our bot needs to know if it needs to execute a command
-    // for this script it will listen for messages that will start with `!`
     if (message.substring(0, 1) == '!') {
         var args = message.substring(1).split(' ');
         var cmd = args[0];
@@ -35,9 +33,18 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         args = args.splice(1);
 
         switch(cmd) {
-            // !ping
-            case 'ping':
-                bot.sendMessage({ to: channelID, message: 'Pong!' });
+            case 'pug':
+                numPlayers = 5;
+                bot.sendMessage({ to: channelID, message: 'Pug!' });
+            break;
+            case '10man':
+                bot.sendMessage({ to: channelID, message: '10man!' });
+            break;
+            case 'squad':
+                bot.sendMessage({ to: channelID, message: 'Squad!' });
+            break;
+            case 'help':
+                bot.sendMessage({ to: channelID, message: 'try !pug, !10man, or !squad' });
             break;
             default:
                 bot.sendMessage({ to: channelID, message: 'Unknown command.' });
